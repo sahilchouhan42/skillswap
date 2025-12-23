@@ -1,5 +1,3 @@
 node_modules/
-backend/package.json
-backend/package-lock.json
 backend/.env
 backend/readme.md

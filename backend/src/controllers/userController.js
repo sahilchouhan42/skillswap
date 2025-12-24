@@ -24,14 +24,6 @@ export const registerUser = async (req, res) => {
             role
         })
 
-        res.cookie("token", token, {
-            httpOnly: true,
-            secure: true,      // Render (HTTPS)
-            sameSite: "none",  // cross-origin
-            maxAge: 7 * 24 * 60 * 60 * 1000,
-        });
-
-
         res.status(201).json({ message: "User registered successfully", user: user })
     } catch (error) {
         console.log(`Error in regiter handle-------> ${error}`)

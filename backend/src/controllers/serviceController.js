@@ -39,6 +39,28 @@ export const getALLService = async (req, res)=>{
     }
 }
 
+export const getSingleService = async (req, res) => {
+  try {
+    const service = await Service.findById(req.params.id)
+      .populate('freelancer', 'name email')
+
+    if (!service) {
+      return res.status(404).json({
+        message: 'Service not found'
+      })
+    }
+
+    res.status(200).json({
+      service
+    })
+  } catch (error) {
+    console.log(`Error in getSingleService ---> ${error.message}`)
+    res.status(500).json({
+      message: 'Server error'
+    })
+  }
+}
+
 export const updateService = async (req, res)=>{
     try {
         const service = await Service.findById(req.params.id)

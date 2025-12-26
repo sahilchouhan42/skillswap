@@ -13,7 +13,6 @@ function App() {
 
   return (
     <>
-      <h1>Skill Swap Frontend Started</h1>
       <AppRoutes />
     </>
   )

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { loginUser } from '../api/authApi'
 
 const Login = () => {
     const [formData, setFormData] = useState({email: '', password: ''})
@@ -8,9 +9,22 @@ const Login = () => {
         setFormData({...formData, [e.target.name]:e.target.value})
     }
 
-    const handleSubmit = (e)=>{
+    const navigate = useNavigate()
+    const handleSubmit = async (e)=>{
         e.preventDefault()
-        console.log(formData)
+        console.log(formData);
+
+        try {
+          const res = await loginUser(formData)
+          //save token
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("user", JSON.stringify(res.data.user))
+
+          alert("Login Successfull")
+          navigate('/dashboard')
+        } catch (error) {
+         alert(error.response?.data?.message|| "Login Failed") 
+        }
     }
   return (
     <div className='max-w-[400px] m-[100px] m-auto text-center'>

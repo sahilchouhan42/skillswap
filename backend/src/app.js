@@ -9,7 +9,8 @@ import reviewRoutes from './routes/reviewRoutes.js'
 const app = express()
 
 const allowedOrigins = [
-  "http://localhost:5173"
+  "http://localhost:5173",
+  "https://skillswap1111.netlify.app/"
 ]
 
 app.use(cors({

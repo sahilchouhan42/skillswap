@@ -22,15 +22,17 @@ const Services = () => {
   return (
     <>
       <Navbar />
-      <div className='p-[20px]'>
-        <h2>Available Services</h2>
-        <div className='grid grid-cols-[repeat(auto-fill,minmax(250px, 1fr))] gap-[15px]'>
+      <div className='bg-slate-300 min-h-screen p-6'>
+        <h2 className='text-3xl font-bold text-slate-800 mb-6'>Available Services</h2>
+        <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
             {services.map((service)=>(
-                <div className='border border-[#ddd] p-[15px] border rounded-[6px]' key={service._id} onClick={()=>navigate(`/services/${service._id}`)}>
-                    <h3>{service.title}</h3>
-                    <p>{service.description}</p>
-                    <p>Rs: {service.price}</p>
-                    <small>By {service.freelancer?.name}</small>
+                <div className='bg-white rounded-2xl shadow-md hover:shadow-xl transition cursor-pointer p-6 flex flex-col justify-between' key={service._id} onClick={()=>navigate(`/services/${service._id}`)}>
+                    <h3 className='text-xl font-semibold text-slate-800 mb-2'>{service.title}</h3>
+                    <p className='text-slate-500 text-sm'>{service.description}</p>
+                    <div className="mt-4 flex items-center justify-between">
+                    <p className="text-indigo-600 font-bold text-lg">Rs: {service.price}</p>
+                    <small className="text-slate-400 text-sm">By {service.freelancer?.name}</small>
+                    </div>
                 </div>
             ))}
         </div>

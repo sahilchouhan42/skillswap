@@ -21,19 +21,21 @@ const Register = () => {
         }
     }
   return (
-    <div className='max-w-[400px] m-[100px] m-auto text-center'>
-      <h2>Register</h2>
-      <form className='flex flex-col gap-[10px]' onSubmit={handleSubmit}>
-        <input type="text" name='name' placeholder='Name' onChange={handlechange} required />
-        <input type="email" name='email' placeholder='Email' onChange={handlechange} required />
-        <input type="password" name='password' placeholder='Password' onChange={handlechange} required />
-        <select name="role" onChange={handlechange}>
+    <div className='min-h-screen bg-slate-400 flex items-center justify-center px-4'>
+    <div className='bg-white w-full max-w-md rounded-2xl shadow-lg p-8'>
+      <h2 className="text-3xl font-bold text-center text-indigo-600 mb-6">Register</h2>
+      <form className="space-y-4" onSubmit={handleSubmit}>
+        <input className='w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none' type="text" name='name' placeholder='Name' onChange={handlechange} required />
+        <input className='w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none' type="email" name='email' placeholder='Email' onChange={handlechange} required />
+        <input className='w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none' type="password" name='password' placeholder='Password' onChange={handlechange} required />
+        <select className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none" name="role" onChange={handlechange}>
             <option value="client">Client</option>
             <option value="freelancer">Freelancer</option>
         </select>
-        <button type='submit'>Register</button>
+        <button className="w-full cursor-pointer bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition font-semibold" type='submit'>Register</button>
       </form>
-      <p>Already have an account ? <Link to='/login' >Login</Link></p>
+      <p className="text-center text-slate-600 mt-6">Already have an account ? <Link className="text-indigo-600 ml-1 hover:underline" to='/login' >Login</Link></p>
+    </div>
     </div>
   )
 }
